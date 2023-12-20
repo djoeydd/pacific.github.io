@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Leaflet Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <!-- Include Leaflet.markercluster CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+  <script>
+    
+    const map = L.map('map', {
+      center: [25.39833, 154.30509], // Adjust initial view according to your data
+      zoom: 3 // Adjust initial zoom level according to your data
+    });
+
+    const imperialFlagIcon = L.icon({
+      iconUrl: 'imperialFlag.png',
+      iconSize: [35, 35],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76]
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    
+    
+
+
+    // Load JSON data from file using Fetch API
+    
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+        const markers = L.markerClusterGroup();
+
+        data.forEach(item => {
+          if (item.Latitude && item.Longitude) {
+            const marker = L.marker([parseFloat(item.Latitude), parseFloat(item.Longitude)], {
+              icon: imperialFlagIcon // Set the custom icon for each marker
+            });
+
+
+          const popupContent = `
+            <b>Name of Vessel:</b> ${item["Name of Vessel"]}<br>
+            <b>Date Sunk:</b> ${item["Month"]} ${item["Day"]}, ${item["Year"]}<br>
+            <b>Type of Vessel:</b> ${item["Type of Vessel"]}<br>
+            <b>Vessel Country:</b> ${item["Vessel Country"]}<br>
+            <b>Assessment:</b> ${item["Assessment"]}<br>
+            <b>Standard Tonnage:</b> ${item["Standard\n Tonnage"]}<br>
+            <b>Flag of Agent:</b> ${item["Flag of Agent"]}<br>
+            <b>Type of Agent:</b> ${item["Type of Agent"]}<br>
+            <b>Casualties:</b> ${item["Casualties"]}<br>
+      `;
+
+
+          marker.bindPopup(popupContent);
+          markers.addLayer(marker);
+          
+          
+       } });
+       map.addLayer(markers);
+      })
+      .catch(error => {
+        console.error('Error loading JSON:', error);
+      });
+      
+      
+      
+    
+  </script>
+</body>
+</html>
