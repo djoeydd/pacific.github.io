@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Leaflet Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <!-- Include Leaflet.markercluster CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+  <style type="text/css">
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      width: 100vw;
+      height: 100vh;
+    }
+    .shipTitle {
+      font-weight: bolder;
+      font-size: 2rem;
+      text-align: center;
+      padding-bottom: 10px;
+
+    }
+    img {
+      max-width: 200px;
+    }
+    .leaflet-popup-content .flag {
+      margin: 0 auto; display:block;
+      max-width: 100px;
+      padding-bottom: 10px;
+    }
+    .leaflet-popup-content img { 
+      margin: 0 auto; display:block; 
+    }
+    .leaflet-popup-content {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 1.2rem;
+    }
+    .leaflet-popup-content-wrapper {
+      background-color: rgb(240, 237, 237);
+    }
+    .leaflet-popup-tip {
+    background-color: rgb(240, 237, 237);
+    }
+    .popup-fixed {
+  position: fixed;
+  top: auto;
+  bottom: 0 !important;
+  left: 0 !important;
+  min-width: 300px;
+  right: 70% !important;
+  transform: none !important;
+  margin: 0px;
+  border-radius: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+  <script>
+    
+    const map = L.map('map', {
+      worldCopyJump: true,
+      center: [25.39833, 154.30509], // Adjust initial view according to your data
+      zoom: 3 // Adjust initial zoom level according to your data
+    });
+
+    var pane = map.createPane('fixed', document.getElementById('map'));
+
+    const imperialFlagIcon = L.icon({
+      iconUrl: 'imperialFlag.png',
+      shadowUrl: 'circle.png',
+      iconSize: [35, 35],
+      iconAnchor: [0, 0],
+      shadowSize: [45, 45], 
+      shadowAnchor: [5, 5],
+      popupAnchor: [17, -5]
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    
+    
+
+
+    // Load JSON data from file using Fetch API
+    
+    fetch('data.json')
+      .then(response => response.json())
+      .then(data => {
+        const markers = L.markerClusterGroup({
+          showCoverageOnHover: false,
+          maxClusterRadius: 55,
+          disableClusteringAtZoom: 6,
+          
+        });
+
+        data.forEach(item => {
+          if (item.Latitude && item.Longitude) {
+            const marker = L.marker([parseFloat(item.Latitude), parseFloat(item.Longitude)], {
+              icon: imperialFlagIcon // Set the custom icon for each marker
+            });
+
+
+          const popupContent = `
+            <img class="flag" src="War_flag_of_the_Imperial_Japanese_Army_(1868–1945).svg.png"<br>
+            <div class="shipTitle">${item["Name of Vessel"]} </div>
+            <img src="${item["Image"]}"><br>
+            <b>Vessel Type:</b> ${item["Type of Vessel"]}<br>
+            <b>Date Sunk:</b> ${item["Month"]} ${item["Day"]}, ${item["Year"]}<br>
+            <b>Country:</b> ${item["Vessel Country"]}<br>
+            <b>Status:</b> ${item["Assessment"]}<br>
+            <b>Standard Tonnage:</b> ${item["Standard\n Tonnage"]}<br>
+            <b>Sunk By:</b> ${item["Flag of Agent"]}<br>
+            <b>Sinking Ship Type:</b> ${item["Type of Agent"]}<br>
+            <b>Casualties:</b> ${item["Casualties"]}<br>
+      `;
+          const popup = L.popup({
+            pane: 'fixed', // Указываем нужный pane
+            className: 'popup-fixed',
+            autoPan: false,
+            }).setContent(popupContent);
+
+          marker.bindPopup(popup);
+          markers.addLayer(marker);
+          
+          
+       } });
+       map.addLayer(markers);
+      })
+      .catch(error => {
+        console.error('Error loading JSON:', error);
+      });
+      
+      
+      
+    
+  </script>
+</body>
+</html>
