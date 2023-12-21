@@ -23,6 +23,44 @@
       padding-bottom: 10px;
 
     }
+    .checkbox-list {
+      display: none;
+      flex-direction: column;
+      column-count: 2;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      background-color: #262626;
+    }
+
+    .checkbox-list-ul li {
+      margin-bottom: 5px;
+      list-style-type: none;
+      padding: 3px;
+      
+    }
+
+    .checkbox-list-ul label {
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: 1rem;
+      color: #d9d9d9;
+      cursor: pointer;
+    }
+
+    .checkbox-list-ul input[type="checkbox"] + label::before {
+      content: "\2610";
+      display: inline-block;
+      width: 1.3em;
+      margin-right: 5px;
+      vertical-align: text-top;
+    }
+
+    .checkbox-list-ul input[type="checkbox"]:checked + label::before {
+      content: "\2611";
+    }
+
     img {
       max-width: 200px;
     }
@@ -45,30 +83,157 @@
     background-color: rgb(240, 237, 237);
     }
     .popup-fixed {
-  position: fixed;
-  top: auto;
-  bottom: 0 !important;
-  left: 0 !important;
-  min-width: 300px;
-  right: 70% !important;
-  transform: none !important;
-  margin: 0px;
-  border-radius: 0;
+      position: fixed;
+      top: auto;
+      bottom: 0 !important;
+      left: 0 !important;
+      min-width: 300px;
+      right: 70% !important;
+      transform: none !important;
+      margin: 0px;
+      border-radius: 0;
+    }
+    .filter-container {
+      position: fixed;
+      width: 20%;
+      height: 100%;
+      top:0px;
+      right: 0px;
+      background-color: #262626;
+      padding: 10px;
+      border-radius: 0px;
+      z-index: 1000;
+      font-size: 1rem;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      padding-left: 0;
+      padding-right: 0;
+      display: flex; /* Change display property to flex */
+      flex-direction: column; /* Set direction as column */
+      align-items: flex-start;
+    }
+    .filter-container h3 {
+      color: #d9d9d9;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font: 1.3em sans-serif;
+      text-align: center;
+      width: 100%;
+    }
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      height: 100%;
+      width: 100%;
+      padding-left: 0;
+      margin-top: 10px;
+    }
+    button {
+      
+      height: 10%;
+      outline: rgb(220, 220, 220) solid 0;
+      padding: 0 0 0 0;
+      border: 0;
+      background-color: #262626;
+      color: #ccc;
+      width: 100%;
+    }
+    button:hover {
+      background-color: #4a4a4a;
+     }
+
+    #filter {
+      margin-bottom: 11%;
     }
 
   </style>
 </head>
 <body>
+  <div class="filter-container">
+    <h3>The Pacific Front</h3>
+    <div class="button-container">
+      <button id="showVesselTypesBtn">Vessel Types</button>
+      <button>Something</button>
+      <button>Something</button>
+      <button>Something</button>
+      <button>Something</button>
+      <button>Something</button>
+    </div>
+
+    
+    <script>document.getElementById('showVesselTypesBtn').addEventListener('click', function() {
+      const checkboxList = document.querySelector('.checkbox-list');
+      checkboxList.style.display = checkboxList.style.display === 'none' ? 'block' : 'none';
+    });</script>
+    <button id="filter" onclick="filterMarkers()">Apply Filter</button>
+  </div>
+  <div class="checkbox-list">
+    <ul class="checkbox-list-ul">
+      <li><label><input type="checkbox" value="Aircraft Carrier" class="ship-filter"> Aircraft Carrier</label></li>
+      <li><label><input type="checkbox" value="Aircraft Ferry" class="ship-filter"> Aircraft Ferry</label></li>
+      <li><label><input type="checkbox" value="Battleship" class="ship-filter"> Battleship</label></li>
+      <li><label><input type="checkbox" value="Cargo" class="ship-filter"> Cargo</label></li>
+      <li><label><input type="checkbox" value="Collier" class="ship-filter"> Collier</label></li>
+      <li><label><input type="checkbox" value="Converted Aircraft Ferry" class="ship-filter"> Converted Aircraft Ferry</label></li>
+      <li><label><input type="checkbox" value="Converted Gunboat" class="ship-filter"> Converted Gunboat</label></li>
+      <li><label><input type="checkbox" value="Converted Light Cruiser" class="ship-filter"> Converted Light Cruiser</label></li>
+      <li><label><input type="checkbox" value="Converted Minesweeper" class="ship-filter"> Converted Minesweeper</label></li>
+      <li><label><input type="checkbox" value="Converted Net Tender" class="ship-filter"> Converted Net Tender</label></li>
+      <li><label><input type="checkbox" value="Converted Salvage Vessel" class="ship-filter"> Converted Salvage Vessel</label></li>
+      <li><label><input type="checkbox" value="Converted Seaplane Tender" class="ship-filter"> Converted Seaplane Tender</label></li>
+      <li><label><input type="checkbox" value="Converted Submarine Chaser" class="ship-filter"> Converted Submarine Chaser</label></li>
+      <li><label><input type="checkbox" value="Converted Submarine Tender" class="ship-filter"> Converted Submarine Tender</label></li>
+      <li><label><input type="checkbox" value="Converted Water Carrier" class="ship-filter"> Converted Water Carrier</label></li>
+      <li><label><input type="checkbox" value="Converted Water carrier" class="ship-filter"> Converted Water carrier</label></li>
+      <li><label><input type="checkbox" value="Destroyer" class="ship-filter"> Destroyer</label></li>
+      <li><label><input type="checkbox" value="District Craft" class="ship-filter"> District Craft</label></li>
+      <li><label><input type="checkbox" value="Dredge" class="ship-filter"> Dredge</label></li>
+      <li><label><input type="checkbox" value="Escort Aircraft Carrier" class="ship-filter"> Escort Aircraft Carrier</label></li>
+      <li><label><input type="checkbox" value="Ferry" class="ship-filter"> Ferry</label></li>
+      <li><label><input type="checkbox" value="Frigate" class="ship-filter"> Frigate</label></li>
+      <li><label><input type="checkbox" value="Gunboat" class="ship-filter"> Gunboat</label></li>
+      <li><label><input type="checkbox" value="Heavy Cruiser" class="ship-filter"> Heavy Cruiser</label></li>
+      <li><label><input type="checkbox" value="High Speed Transport" class="ship-filter"> High Speed Transport</label></li>
+      <li><label><input type="checkbox" value="Light Aircraft Carrier" class="ship-filter"> Light Aircraft Carrier</label></li>
+      <li><label><input type="checkbox" value="Light Cruiser" class="ship-filter"> Light Cruiser</label></li>
+      <li><label><input type="checkbox" value="Minelayer" class="ship-filter"> Minelayer</label></li>
+      <li><label><input type="checkbox" value="Minesweeper" class="ship-filter"> Minesweeper</label></li>
+      <li><label><input type="checkbox" value="Miscellaneous Auxiliary" class="ship-filter"> Miscellaneous Auxiliary</label></li>
+      <li><label><input type="checkbox" value="Motor Torpedo Boat Tender" class="ship-filter"> Motor Torpedo Boat Tender</label></li>
+      <li><label><input type="checkbox" value="Old Destroyer" class="ship-filter"> Old Destroyer</label></li>
+      <li><label><input type="checkbox" value="Old Heavy Cruiser" class="ship-filter"> Old Heavy Cruiser</label></li>
+      <li><label><input type="checkbox" value="Passenger-Cargo" class="ship-filter"> Passenger-Cargo</label></li>
+      <li><label><input type="checkbox" value="Repair Ship" class="ship-filter"> Repair Ship</label></li>
+      <li><label><input type="checkbox" value="River Gunboat" class="ship-filter"> River Gunboat</label></li>
+      <li><label><input type="checkbox" value="Salvage Vessel" class="ship-filter"> Salvage Vessel</label></li>
+      <li><label><input type="checkbox" value="Seaplane Tender" class="ship-filter"> Seaplane Tender</label></li>
+      <li><label><input type="checkbox" value="Special Minelayer" class="ship-filter"> Special Minelayer</label></li>
+      <li><label><input type="checkbox" value="Special Minesweeper" class="ship-filter"> Special Minesweeper</label></li>
+      <li><label><input type="checkbox" value="Special Submarine Chaser" class="ship-filter"> Special Submarine Chaser</label></li>
+      <li><label><input type="checkbox" value="Submarine" class="ship-filter"> Submarine</label></li>
+      <li><label><input type="checkbox" value="Submarine Chaser" class="ship-filter"> Submarine Chaser</label></li>
+      <li><label><input type="checkbox" value="Submarine Tender" class="ship-filter"> Submarine Tender</label></li>
+      <li><label><input type="checkbox" value="Supply Ship" class="ship-filter"> Supply Ship</label></li>
+      <li><label><input type="checkbox" value="Surveying Ship" class="ship-filter"> Surveying Ship</label></li>
+      <li><label><input type="checkbox" value="Tank Landing Ship" class="ship-filter"> Tank Landing Ship</label></li>
+      <li><label><input type="checkbox" value="Tanker" class="ship-filter"> Tanker</label></li>
+      <li><label><input type="checkbox" value="Torpedo Boat" class="ship-filter"> Torpedo Boat</label></li>
+      <li><label><input type="checkbox" value="Training Cruiser" class="ship-filter"> Training Cruiser</label></li>
+      <li><label><input type="checkbox" value="Transport" class="ship-filter"> Transport</label></li>
+      <li><label><input type="checkbox" value="Trawler" class="ship-filter"> Trawler</label></li>
+      <li><label><input type="checkbox" value="Tug" class="ship-filter"> Tug</label></li>
+      <li><label><input type="checkbox" value="Yacht" class="ship-filter"> Yacht</label></li>
+    </ul>
+  </div>
   <div id="map"></div>
+  
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
   <script>
-    
     const map = L.map('map', {
       worldCopyJump: true,
-      center: [25.39833, 154.30509], // Adjust initial view according to your data
-      zoom: 3 // Adjust initial zoom level according to your data
+      center: [25.39833, 154.30509],
+      zoom: 3
     });
 
     var pane = map.createPane('fixed', document.getElementById('map'));
@@ -83,31 +248,31 @@
       popupAnchor: [17, -5]
     });
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.{ext}',  {
       maxZoom: 19,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      //attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      ext: 'png'
     }).addTo(map);
     
-    
+    let allMarkers = null;
+    const markers = L.markerClusterGroup({
+      showCoverageOnHover: false,
+      maxClusterRadius: 55,
+      disableClusteringAtZoom: 6,
+    });
 
+    const shipFilters = document.querySelectorAll('.ship-filter');
 
-    // Load JSON data from file using Fetch API
-    
     fetch('data.json')
       .then(response => response.json())
       .then(data => {
-        const markers = L.markerClusterGroup({
-          showCoverageOnHover: false,
-          maxClusterRadius: 55,
-          disableClusteringAtZoom: 25,
-          
-        });
+        // Filter out items without latitude and longitude
+        const validData = data.filter(item => item.Latitude && item.Longitude);
 
-        data.forEach(item => {
-          if (item.Latitude && item.Longitude) {
-            const marker = L.marker([parseFloat(item.Latitude), parseFloat(item.Longitude)], {
-              icon: imperialFlagIcon // Set the custom icon for each marker
-            });
+        allMarkers = validData.map(item => {
+          const marker = L.marker([parseFloat(item.Latitude), parseFloat(item.Longitude)], {
+            icon: imperialFlagIcon
+          });
 
 
           const popupContent = `
@@ -123,27 +288,39 @@
             <b>Sinking Ship Type:</b> ${item["Type of Agent"]}<br>
             <b>Casualties:</b> ${item["Casualties"]}<br>
       `;
+
+
           const popup = L.popup({
-            pane: 'fixed', // Указываем нужный pane
+            pane: 'fixed', 
             className: 'popup-fixed',
             autoPan: false,
-            //closeOnClick: false;
-            }).setContent(popupContent);
+            closeOnClick: false,
+          }).setContent(popupContent);
 
           marker.bindPopup(popup);
           markers.addLayer(marker);
-          
-          
-       } });
-       map.addLayer(markers);
+          return { marker, type: item["Type of Vessel"] };
+        });
+
+        map.addLayer(markers);
       })
       .catch(error => {
         console.error('Error loading JSON:', error);
       });
-      
-      
-      
-    
+
+    function filterMarkers() {
+      const selectedTypes = Array.from(shipFilters)
+        .filter(checkbox => checkbox.checked)
+        .map(checkbox => checkbox.value);
+
+      markers.clearLayers();
+      allMarkers.forEach(({ marker, type }) => {
+        if (selectedTypes.includes(type)) {
+          markers.addLayer(marker);
+        }
+      });
+      map.addLayer(markers);
+    }
   </script>
 </body>
 </html>
