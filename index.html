@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Leaflet Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <!-- Include Leaflet.markercluster CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+  <link rel="stylesheet" href="styles.css"> <!-- Include your custom CSS file -->
+</head>
+<body>
+  <div class="filter-container">
+    <h3>The Pacific Front</h3>
+    <div class="button-container">
+      <button id="showVesselTypesBtn">Vessel Types</button>
+      <button>Sinking Country</button>
+      <button>Vessel Types</button>
+      <button>Vessel Types</button>
+      <button>Vessel Types</button>
+      <button>Vessel Types</button>
+    </div>
+    <button id="filter" onclick="filterMarkers()">Apply Filter</button>
+  </div>
+  <div class="checkbox-list2">
+    
+    <ul class="checkbox-list-ul2">
+    </ul>
+  </div>
+  <div class="checkbox-list">
+    <ul class="checkbox-list-ul">
+      <li><label><input type="checkbox" value="Aircraft Carrier" class="ship-filter"> Aircraft Carrier</label></li>
+      <li><label><input type="checkbox" value="Aircraft Ferry" class="ship-filter"> Aircraft Ferry</label></li>
+      <li><label><input type="checkbox" value="Battleship" class="ship-filter"> Battleship</label></li>
+      <li><label><input type="checkbox" value="Cargo" class="ship-filter"> Cargo</label></li>
+      <li><label><input type="checkbox" value="Collier" class="ship-filter"> Collier</label></li>
+      <li><label><input type="checkbox" value="Converted Aircraft Ferry" class="ship-filter"> Converted Aircraft Ferry</label></li>
+      <li><label><input type="checkbox" value="Converted Gunboat" class="ship-filter"> Converted Gunboat</label></li>
+      <li><label><input type="checkbox" value="Converted Light Cruiser" class="ship-filter"> Converted Light Cruiser</label></li>
+      <li><label><input type="checkbox" value="Converted Minesweeper" class="ship-filter"> Converted Minesweeper</label></li>
+      <li><label><input type="checkbox" value="Converted Net Tender" class="ship-filter"> Converted Net Tender</label></li>
+      <li><label><input type="checkbox" value="Converted Salvage Vessel" class="ship-filter"> Converted Salvage Vessel</label></li>
+      <li><label><input type="checkbox" value="Converted Seaplane Tender" class="ship-filter"> Converted Seaplane Tender</label></li>
+      <li><label><input type="checkbox" value="Converted Submarine Chaser" class="ship-filter"> Converted Submarine Chaser</label></li>
+      <li><label><input type="checkbox" value="Converted Submarine Tender" class="ship-filter"> Converted Submarine Tender</label></li>
+      <li><label><input type="checkbox" value="Converted Water Carrier" class="ship-filter"> Converted Water Carrier</label></li>
+      <li><label><input type="checkbox" value="Converted Water carrier" class="ship-filter"> Converted Water carrier</label></li>
+      <li><label><input type="checkbox" value="Destroyer" class="ship-filter"> Destroyer</label></li>
+      <li><label><input type="checkbox" value="District Craft" class="ship-filter"> District Craft</label></li>
+      <li><label><input type="checkbox" value="Dredge" class="ship-filter"> Dredge</label></li>
+      <li><label><input type="checkbox" value="Escort Aircraft Carrier" class="ship-filter"> Escort Aircraft Carrier</label></li>
+      <li><label><input type="checkbox" value="Ferry" class="ship-filter"> Ferry</label></li>
+      <li><label><input type="checkbox" value="Frigate" class="ship-filter"> Frigate</label></li>
+      <li><label><input type="checkbox" value="Gunboat" class="ship-filter"> Gunboat</label></li>
+      <li><label><input type="checkbox" value="Heavy Cruiser" class="ship-filter"> Heavy Cruiser</label></li>
+      <li><label><input type="checkbox" value="High Speed Transport" class="ship-filter"> High Speed Transport</label></li>
+      <li><label><input type="checkbox" value="Light Aircraft Carrier" class="ship-filter"> Light Aircraft Carrier</label></li>
+      <li><label><input type="checkbox" value="Light Cruiser" class="ship-filter"> Light Cruiser</label></li>
+      <li><label><input type="checkbox" value="Minelayer" class="ship-filter"> Minelayer</label></li>
+      <li><label><input type="checkbox" value="Minesweeper" class="ship-filter"> Minesweeper</label></li>
+      <li><label><input type="checkbox" value="Miscellaneous Auxiliary" class="ship-filter"> Miscellaneous Auxiliary</label></li>
+      <li><label><input type="checkbox" value="Motor Torpedo Boat Tender" class="ship-filter"> Motor Torpedo Boat Tender</label></li>
+      <li><label><input type="checkbox" value="Old Destroyer" class="ship-filter"> Old Destroyer</label></li>
+      <li><label><input type="checkbox" value="Old Heavy Cruiser" class="ship-filter"> Old Heavy Cruiser</label></li>
+      <li><label><input type="checkbox" value="Passenger-Cargo" class="ship-filter"> Passenger-Cargo</label></li>
+      <li><label><input type="checkbox" value="Repair Ship" class="ship-filter"> Repair Ship</label></li>
+      <li><label><input type="checkbox" value="River Gunboat" class="ship-filter"> River Gunboat</label></li>
+      <li><label><input type="checkbox" value="Salvage Vessel" class="ship-filter"> Salvage Vessel</label></li>
+      <li><label><input type="checkbox" value="Seaplane Tender" class="ship-filter"> Seaplane Tender</label></li>
+      <li><label><input type="checkbox" value="Special Minelayer" class="ship-filter"> Special Minelayer</label></li>
+      <li><label><input type="checkbox" value="Special Minesweeper" class="ship-filter"> Special Minesweeper</label></li>
+      <li><label><input type="checkbox" value="Special Submarine Chaser" class="ship-filter"> Special Submarine Chaser</label></li>
+      <li><label><input type="checkbox" value="Submarine" class="ship-filter"> Submarine</label></li>
+      <li><label><input type="checkbox" value="Submarine Chaser" class="ship-filter"> Submarine Chaser</label></li>
+      <li><label><input type="checkbox" value="Submarine Tender" class="ship-filter"> Submarine Tender</label></li>
+      <li><label><input type="checkbox" value="Supply Ship" class="ship-filter"> Supply Ship</label></li>
+      <li><label><input type="checkbox" value="Surveying Ship" class="ship-filter"> Surveying Ship</label></li>
+      <li><label><input type="checkbox" value="Tank Landing Ship" class="ship-filter"> Tank Landing Ship</label></li>
+      <li><label><input type="checkbox" value="Tanker" class="ship-filter"> Tanker</label></li>
+      <li><label><input type="checkbox" value="Torpedo Boat" class="ship-filter"> Torpedo Boat</label></li>
+      <li><label><input type="checkbox" value="Training Cruiser" class="ship-filter"> Training Cruiser</label></li>
+      <li><label><input type="checkbox" value="Transport" class="ship-filter"> Transport</label></li>
+      <li><label><input type="checkbox" value="Trawler" class="ship-filter"> Trawler</label></li>
+      <li><label><input type="checkbox" value="Tug" class="ship-filter"> Tug</label></li>
+      <li><label><input type="checkbox" value="Yacht" class="ship-filter"> Yacht</label></li>
+    </ul>
+  </div>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
