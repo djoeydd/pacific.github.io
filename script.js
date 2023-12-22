@@ -30,7 +30,7 @@ const map = L.map('map', {
   const markers = L.markerClusterGroup({
     showCoverageOnHover: false,
     maxClusterRadius: 55,
-    disableClusteringAtZoom: 12,
+    disableClusteringAtZoom: 10,
   });
   
   const shipFilters = document.querySelectorAll('.ship-filter');
