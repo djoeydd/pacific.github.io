@@ -6,12 +6,18 @@ body {
     width: 100vw;
     height: 100vh;
   }
+  #title-top {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    
+  }
   .shipTitle {
     font-weight: bolder;
     font-size: 2rem;
     text-align: center;
     padding-bottom: 10px;
-
   }
   .checkbox-list {
     display: none;
