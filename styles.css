@@ -1,0 +1,423 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  #map {
+    width: 100vw;
+    height: 100vh;
+
+  }
+  #title-top {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    
+  }
+  .shipTitle {
+    font-weight: bolder;
+    font-size: 2rem;
+    text-align: center;
+    padding-bottom: 10px;
+  }
+  .checkbox-list {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    column-count: 3;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 20%;
+    background-color: #262626;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    height: 40%;
+    top: 0; /* Adjust the top value as needed */
+    right: 20%; /* Adjust the right value as needed */
+    z-index: 1000; /* Ensure it appears above the map */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    }
+
+  .checkbox-list-ul li {
+    margin-bottom: 5px;
+    list-style-type: none;
+    padding: 3px;
+    
+  }
+  
+
+  .checkbox-list-ul label {
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    color: #d9d9d9;
+    cursor: pointer;
+  }
+  input[type="checkbox" i] {
+    margin-bottom: 10px;
+}
+
+  .checkbox-list-ul input[type="checkbox"] + label::before {
+    content: "\2610";
+    display: inline-block;
+    width: 1.3em;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    vertical-align: text-top;
+  }
+
+  .checkbox-list-ul input[type="checkbox"]:checked + label::before {
+    content: "\2611";
+  }
+  .checkbox-list-ul input[type="checkbox"] {
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-right: 5px;
+    outline: none;
+    vertical-align: middle;
+    position: relative; 
+    bottom: 1px; 
+  }
+  .checkbox-list-ul input[type="checkbox"]:checked {
+    background-color: #ffffff;
+    border-color: #ffffff;
+  }
+
+  img {
+    max-width: 200px;
+  }
+  .leaflet-popup-content .flag {
+    display: flex;
+    width: 30%;
+    margin-left: 0;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-top: 5%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+    .leaflet-popup-content img { 
+    margin: 0 auto; display:block; 
+    
+    
+  }
+  .leaflet-popup-content {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.2rem;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .leaflet-popup-content-wrapper {
+    background-color: rgb(240, 237, 237);
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: auto;
+    width: 100% !important;
+  }
+  .leaflet-popup-tip-container {
+    display: none;
+  }
+  .leaflet-popup-tip {
+  background-color: rgb(240, 237, 237);
+  }
+  .leaflet-popup-close-button {
+    width: 60px !important; /* adjust as needed */
+    height: 60px !important; /* adjust as needed */
+    font-size: 3rem !important; /* adjust as needed */
+    margin-top: 5% !important;
+    margin-right: 5% !important;
+}
+
+  .popup-fixed {
+    display: block;
+    position: fixed;
+    top: auto;
+    bottom: 0 !important;
+    left: 0 !important;
+    min-width: 1200px;
+    right: 70% !important;
+    transform: none !important;
+    margin: 0px;
+    border-radius: 0;
+    background-color: #e6e4e4;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.7), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  }
+  .filter-container {
+    position: fixed;
+    width: 20%;
+    height: 100%;
+    top:0px;
+    right: 0px;
+    background-color: #262626;
+    padding: 10px;
+    border-radius: 0px;
+    z-index: 1000;
+    font-size: 1rem;
+    padding-left: 0;
+    padding-right: 0;
+    display: flex; /* Change display property to flex */
+    flex-direction: column; /* Set direction as column */
+    align-items: flex-start;
+  }
+  .filter-container h3 {
+    color: #d9d9d9;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font: 1.3em sans-serif;
+    text-align: center;
+    width: 100%;
+  }
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 100%;
+    width: 100%;
+    padding-left: 0;
+    margin-top: 10px;
+  }
+  button {
+    
+    height: 10%;
+    outline: rgb(220, 220, 220) solid 0;
+    padding: 0 0 0 0;
+    border: 0;
+    background-color: #262626;
+    color: #ccc;
+    width: 100%;
+  }
+  button:hover {
+    background-color: #4a4a4a;
+   }
+
+  #filter {
+    margin-bottom: 11%;
+  }
+  .main-container {
+    flex: 1 1;
+    order: 2;
+    display: flex;
+  }
+
+  .popup-container {
+    display: flex;
+        flex-direction: column;
+        font: 3rem arial;
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: #e6e4e4;
+        padding: 0;
+}
+.data-container {
+    justify-content: space-between;
+    height: 45%;
+
+}
+.data-container p {
+    margin-top: 0.8rem;
+    left: 0;
+}
+.popup-container h3 {
+    text-align: center;
+    font-size: 6rem;
+    font-family: 'Romeo', Arial, sans-serif;
+    letter-spacing: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 0;
+    color: #262626;
+}
+#ship-name{
+  text-align: center;
+        font-size: 6rem;
+        font-family: 'Romeo', Arial, sans-serif !important;
+        letter-spacing: 1rem;
+        margin-top: 2rem;
+        margin-bottom: 0;
+        color: #262626;
+}
+.popup-container-text {
+    display: flex;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    
+}
+.text-data {
+    color: #262626;
+    font-family: Helvetica, sans-serif;
+    letter-spacing: .1rem;
+    padding-left: 5%;
+}
+.ship-image {
+    display: flex;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 1rem;
+}
+.japan-flag{
+    display: flex;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-top: 5%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+#vessel-type{
+    text-align: center;
+    padding-left: 0;
+    margin-top: 0;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  padding-top: 100%;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.9);
+  
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  background-color: #26262662;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 6rem;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+@font-face {
+    font-family: 'Romeo';
+    font-style: normal;
+    font-weight: normal;
+    src: url('fonts/Romeo FB Cond Medium Regular/Romeo FB Cond Medium Regular.otf') format('opentype');
+}
+
+  @media (max-width: 1000px) {
+    /* Add styles specific to smaller screens (e.g., mobile) */
+    /* Adjust sizes, layout, etc. */
+    b {
+      /* Example styles for mobile */
+      font-size: 2rem;
+    }
+    .checkbox-list {
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        column-count: 3;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 35%;
+        background-color: #262626;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        height: 40%;
+        top: 0; /* Adjust the top value as needed */
+        right: 32%; /* Adjust the right value as needed */
+        z-index: 1000; /* Ensure it appears above the map */
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+        padding-top: 3rem;
+        }
+    .checkbox-list-ul label {
+        display: block;
+        font-family: Arial, sans-serif;
+        font-size: 2rem;
+        color: #d9d9d9;
+        cursor: pointer;
+    }
+    .filter-container {
+        width: 28%;
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+    .filter-container h3 {
+        color: #d9d9d9;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font: 3rem sans-serif;
+        text-align: center;
+        width: 100%;
+        letter-spacing: 3px;
+      }
+    .popup-fixed {
+        position: fixed;
+        top: auto;
+        bottom: 0 !important;
+        left: 0 !important;
+        min-width: 500px;
+        right: 70% !important;
+        transform: none !important;
+        margin: 10px;
+        border-radius: 0;
+        padding-right: 0;
+  }
+    .shipTitle {
+        font-weight: bolder;
+        font-size: 4rem;
+        text-align: center;
+        padding-bottom: 10px;
+    
+        /* ... other mobile-specific styles ... */
+    }
+    .leaflet-popup-content .flag {
+        display: flex;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-top: 5%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+    .leaflet-popup-content {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 2rem;
+  }
+    .leaflet-popup-close-button{
+        width: 100px;
+  }
+    button {
+        font: 2.5rem sans-serif;
+        letter-spacing: 2px;
+    }
+    img {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    
+    
+}
