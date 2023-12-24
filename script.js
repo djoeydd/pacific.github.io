@@ -5,6 +5,7 @@ const map = L.map('map', {
     noWrap: false,
     center: [25.39833, 154.30509],
     zoom: 3,
+    minZoom:3,
 
 });
   
