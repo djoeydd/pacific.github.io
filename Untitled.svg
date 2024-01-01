@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="52.094 50.767 408.5277 150.208" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient gradientUnits="userSpaceOnUse" cx="-103.042" cy="-172.896" r="24.372" id="gradient-1" gradientTransform="matrix(1.069141, 0, 0, 1, 0, 0)">
+      <stop offset="0" style="stop-color: #bada55"/>
+      <stop offset="1" style="stop-color: #758d29"/>
+    </radialGradient>
+  </defs>
+  <path d="M 99.22 144.817 H 412.124 V 200.975 H 99.22 V 144.817 Z" style="fill: rgb(216, 216, 216); stroke-width: 0px;" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+  <rect x="122.694" y="135.703" width="37.993" height="10.114" style="fill: rgb(216, 216, 216);" rx="1.573" ry="1.573" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+  <path style="fill: rgb(216, 216, 216); stroke-width: 3px; stroke: rgb(216, 216, 216);" d="M 125.318 137.703 L 109.612 130.519" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+  <rect x="165.247" y="120.405" width="37.993" height="25.412" style="fill: rgb(216, 216, 216);" rx="1.573" ry="1.573" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+  <path style="fill: rgb(216, 216, 216); stroke-width: 3px; stroke: rgb(216, 216, 216);" d="M 167.871 122.405 L 152.165 115.221" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+  <rect x="214.83" y="120.405" width="37.993" height="25.412" style="fill: rgb(216, 216, 216);" rx="1.573" ry="1.573" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+  <rect x="220.83" y="98.953" width="24.515" height="22.268" style="fill: rgb(216, 216, 216);" rx="1.573" ry="1.573" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+  <rect x="225.794" y="79.685" width="12.551" height="22.268" style="fill: rgb(216, 216, 216);" rx="1.573" ry="1.573" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+  <path style="fill: rgb(216, 216, 216); stroke: rgb(216, 216, 216); stroke-width: 3px;" d="M 264.212 146.806 L 265.572 50.767" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+  <rect x="275.173" y="98.953" width="24.515" height="46.864" style="fill: rgb(216, 216, 216);" rx="1.573" ry="1.573" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+  <path style="fill: rgb(216, 216, 216); stroke-width: 2px; stroke: rgb(216, 216, 216);" d="M 272.173 58.39 L 258.823 58.39" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+  <path d="M -136.224 -200.975 L -87.637 -137.703 L -136.224 -144.817 L -136.224 -200.975 Z" style="fill: rgb(216, 216, 216); stroke-width: 0px; stroke-miterlimit: 1; stroke: url('#gradient-1');" transform="matrix(0.9999999999999999, 0, 0.008363001048564911, -0.9999999999999999, 549.4102783203125, -0.000004000000473070031)"/>
+  <rect x="-397.707" y="135.203" width="41.871" height="10.613" style="fill: rgb(216, 216, 216);" rx="1.652" ry="1.573" transform="matrix(-0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+  <path style="fill: rgb(216, 216, 216); stroke-width: 3px; stroke: rgb(216, 216, 216);" d="M 394.816 136.302 L 412.124 128.763" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+  <rect x="-350.811" y="119.15" width="41.871" height="26.667" style="fill: rgb(216, 216, 216);" rx="1.652" ry="1.573" transform="matrix(-0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+  <path style="fill: rgb(216, 216, 216); stroke-width: 3px; stroke: rgb(216, 216, 216);" d="M 347.92 120.248 L 365.228 112.71" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+  <path d="M 52.094 137.703 L 109.612 145.817 L 99.22 200.975 L 52.094 137.703 Z" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 0px; paint-order: stroke; stroke-linecap: round; transform-origin: 80.853px 169.339px;"/>
+  <path style="fill: rgb(216, 216, 216); stroke-width: 2px;" d="M 125.318 175.224 L 388.874 175.224" transform="matrix(0.9999999999999999, 0, 0, 0.9999999999999999, 0, -2.842170943040401e-14)"/>
+</svg>
